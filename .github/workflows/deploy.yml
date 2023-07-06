@@ -8,10 +8,10 @@ on:
 env:
   
   # alphanumeric string under 14 characters
-  RESOURCE_GROUP_NAME: featureflagsaca
+  RESOURCE_GROUP_NAME: abtestacapht
 
   # specify your preferred region
-  REGION: eastus
+  REGION: westeurope
 
   FRONTEND_DOCKER: FeatureFlagsWithContainerApps/Dockerfile
   FRONTEND_IMAGE: frontend
@@ -45,7 +45,7 @@ jobs:
         inlineScript: >
           echo "Creating resources"
 
-          az deployment group create --resource-group ${{ env.RESOURCE_GROUP_NAME }} --template-file '/github/workspace/Azure/main.bicep' --debug
+          az deployment group create --resource-group ${{ env.RESOURCE_GROUP_NAME }} --template-file '${{ github.workspace }}/Azure/main.bicep' --debug
 
   build:
     runs-on: ubuntu-latest
